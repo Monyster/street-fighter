@@ -29,6 +29,10 @@ function createFighterName(fighter) {
     return fighterName;
 }
 
+function createInfoWrapper() {
+    return createElement({ tagName: 'div', className: 'fighter-preview___info' });
+}
+
 export function createFighterPreview(fighter, position) {
     const positionClassName = position === 'right' ? 'fighter-preview___right' : 'fighter-preview___left';
     const fighterElement = createElement({
@@ -42,10 +46,14 @@ export function createFighterPreview(fighter, position) {
 
     // todo: show fighter info (image, name, health, etc.)
     const fighterImage = createFighterImage(fighter);
+
+    const fighterInfoWrapper = createInfoWrapper();
     const fighterName = createFighterName(fighter);
 
+    fighterInfoWrapper.appendChild(fighterName);
+
     fighterElement.appendChild(fighterImage);
-    fighterElement.appendChild(fighterName);
+    fighterElement.appendChild(fighterInfoWrapper);
 
     return fighterElement;
 }
