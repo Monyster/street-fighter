@@ -1,13 +1,41 @@
 .fighter-preview___root {
-  display: flex;
-  flex-direction: column;
-  flex-basis: 250px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: 250px;
+}
+
+.fighter-preview___root img {
+    height: 400px;
 }
 
 .fighter-preview___right {
-  align-items: flex-end;
+    align-items: flex-end;
+}
+
+.fighter-preview___right img {
+    transform: scaleX(-1);
 }
 
 .fighter-preview___left {
-  align-items: flex-start;
+    align-items: flex-start;
+}
+
+.fighter-preview___info {
+    width: 100%;
+
+    background: #ffdfa7;
+    border: 5px solid #ca9650;
+}
+
+.fighter-preview___name {
+    text-align: center;
+
+    font-weight: 600;
+    font-size: 72px;
+
+    margin: 0;
+
+    background: -webkit-linear-gradient(#e28000, #d30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
