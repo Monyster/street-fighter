@@ -9,7 +9,6 @@
     },
     "plugins": ["prettier"],
     "rules": {
-        "no-console": "off",
         "prettier/prettier": [
             "error",
             {
@@ -17,7 +16,7 @@
             }
         ],
         "arrow-body-style": 0,
-        "no-console": ["error", { "allow": ["warn", "error"] }],
+        "no-console": ["error", { "allow": ["warn", "error", "log"] }],
         "no-underscore-dangle": 0,
         "no-useless-catch": 0
     },
