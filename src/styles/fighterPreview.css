@@ -42,7 +42,7 @@
     -webkit-text-fill-color: transparent;
 }
 
-.fighter-preview___health {
+.fighter-preview___parameter {
     display: flex;
     align-items: center;
 
@@ -54,11 +54,11 @@
     font-size: 40px;
 }
 
-.fighter-preview___health-ico {
+.fighter-preview___parameter-ico {
     background: -webkit-linear-gradient(#ff0000, #615b09);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.fighter-preview___health-value {
+.fighter-preview___parameter-value {
 }
