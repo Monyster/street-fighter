@@ -29,6 +29,21 @@ function createFighterName(fighter) {
     return fighterName;
 }
 
+function createFighterHealth(fighter) {
+    const fighterHealthBlock = createElement({ tagName: 'div', className: 'fighter-preview___health' });
+
+    const healthIco = createElement({ tagName: 'div', className: 'fighter-preview___health-ico' });
+    healthIco.innerHTML = '&#10084;';
+
+    const healthValue = createElement({ tagName: 'div', className: 'fighter-preview___health-value' });
+    healthValue.innerText = fighter.health;
+
+    fighterHealthBlock.appendChild(healthIco);
+    fighterHealthBlock.appendChild(healthValue);
+
+    return fighterHealthBlock;
+}
+
 function createInfoWrapper() {
     return createElement({ tagName: 'div', className: 'fighter-preview___info' });
 }
@@ -48,9 +63,12 @@ export function createFighterPreview(fighter, position) {
     const fighterImage = createFighterImage(fighter);
 
     const fighterInfoWrapper = createInfoWrapper();
-    const fighterName = createFighterName(fighter);
 
+    const fighterName = createFighterName(fighter);
     fighterInfoWrapper.appendChild(fighterName);
+
+    const fighterHealth = createFighterHealth(fighter);
+    fighterInfoWrapper.appendChild(fighterHealth);
 
     fighterElement.appendChild(fighterImage);
     fighterElement.appendChild(fighterInfoWrapper);
