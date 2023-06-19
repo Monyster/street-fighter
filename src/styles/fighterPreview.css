@@ -23,6 +23,8 @@
 .fighter-preview___info {
     width: 100%;
 
+    padding: 5px 10px;
+
     background: #ffdfa7;
     border: 5px solid #ca9650;
 }
@@ -38,4 +40,25 @@
     background: -webkit-linear-gradient(#e28000, #d30000);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
+
+.fighter-preview___health {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    padding: 5px 0 0 0;
+
+    font-weight: 600;
+    font-size: 40px;
+}
+
+.fighter-preview___health-ico {
+    background: -webkit-linear-gradient(#ff0000, #615b09);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.fighter-preview___health-value {
 }
