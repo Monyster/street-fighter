@@ -17,9 +17,10 @@ export function createFighterImage(fighter) {
 }
 
 /**
- * Create element that represent fighter name
- * @param {*} name
- * @returns
+ * Create an element that represents the name of the fighter
+ *
+ * @param {*} fighter Fighter
+ * @returns <h1 class="fighter-preview___name">{fighter.name}</h1>
  */
 function createFighterName(fighter) {
     const fighterName = createElement({ tagName: 'h1', className: 'fighter-preview___name' });
@@ -40,7 +41,6 @@ export function createFighterPreview(fighter, position) {
     }
 
     // todo: show fighter info (image, name, health, etc.)
-
     const fighterImage = createFighterImage(fighter);
     const fighterName = createFighterName(fighter);
 
