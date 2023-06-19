@@ -29,19 +29,19 @@ function createFighterName(fighter) {
     return fighterName;
 }
 
-function createFighterHealth(fighter) {
-    const fighterHealthBlock = createElement({ tagName: 'div', className: 'fighter-preview___health' });
+function createFighterParameter(ico, value) {
+    const fighterParameterBlock = createElement({ tagName: 'div', className: 'fighter-preview___parameter' });
 
-    const healthIco = createElement({ tagName: 'div', className: 'fighter-preview___health-ico' });
-    healthIco.innerHTML = '&#10084;';
+    const parameterIco = createElement({ tagName: 'div', className: 'fighter-preview___parameter-ico' });
+    parameterIco.innerHTML = ico;
 
-    const healthValue = createElement({ tagName: 'div', className: 'fighter-preview___health-value' });
-    healthValue.innerText = fighter.health;
+    const parameterValue = createElement({ tagName: 'div', className: 'fighter-preview___parameter-value' });
+    parameterValue.innerText = value;
 
-    fighterHealthBlock.appendChild(healthIco);
-    fighterHealthBlock.appendChild(healthValue);
+    fighterParameterBlock.appendChild(parameterIco);
+    fighterParameterBlock.appendChild(parameterValue);
 
-    return fighterHealthBlock;
+    return fighterParameterBlock;
 }
 
 function createInfoWrapper() {
@@ -67,8 +67,13 @@ export function createFighterPreview(fighter, position) {
     const fighterName = createFighterName(fighter);
     fighterInfoWrapper.appendChild(fighterName);
 
-    const fighterHealth = createFighterHealth(fighter);
+    const fighterHealth = createFighterParameter('&#10084;', fighter.health);
+    const fighterDefense = createFighterParameter('&#128737;', fighter.defense);
+    const fighterAttack = createFighterParameter('&#9876;', fighter.attack);
+
     fighterInfoWrapper.appendChild(fighterHealth);
+    fighterInfoWrapper.appendChild(fighterDefense);
+    fighterInfoWrapper.appendChild(fighterAttack);
 
     fighterElement.appendChild(fighterImage);
     fighterElement.appendChild(fighterInfoWrapper);
