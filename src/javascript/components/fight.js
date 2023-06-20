@@ -39,6 +39,12 @@ export async function fight(firstFighter, secondFighter) {
         const newFirstFighter = { ...firstFighter, hasUnblockCrit: false };
         const newSecondFighter = { ...secondFighter, hasUnblockCrit: false };
 
+        // Update special critical hit chance which can't be blocked
+        const critUpdateInterval = setInterval(() => {
+            newFirstFighter.hasUnblockCrit = true;
+            newSecondFighter.hasUnblockCrit = true;
+        }, 10000);
+
         console.warn(newFirstFighter);
         console.warn(newSecondFighter);
 
@@ -72,7 +78,7 @@ export async function fight(firstFighter, secondFighter) {
             if (winner) {
                 document.removeEventListener('keydown', () => {});
                 document.removeEventListener('keyup', () => {});
-
+                critUpdateInterval.clear();
                 pressedKeys.clear();
                 resolve(winner);
             }
