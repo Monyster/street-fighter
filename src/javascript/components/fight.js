@@ -8,6 +8,11 @@ let critUpdateInterval = null;
 
 let fightResolve = null;
 
+let firstFighterIndicator = null;
+let secondFighterIndicator = null;
+
+let updateIndicators = () => {};
+
 const pressedKeys = new Set();
 
 // Generate random number integer (1 or 2)
@@ -128,8 +133,7 @@ const handlerFightKeyDown = event => {
 
     processFightKeys();
 
-    console.warn(newFirstFighter.health);
-    console.warn(newSecondFighter.health);
+    updateIndicators(newFirstFighter.health, newSecondFighter.health);
 
     // Health check and select winner
     selectWinner();
@@ -150,6 +154,25 @@ const handlerFightKeyUp = event => {
     pressedKeys.delete(event.code);
 };
 
+/**
+ *
+ * @param {*} initFirstFighter
+ * @param {*} initSecondFighter
+ * @returns
+ */
+const updateFighterIndicator = (initFirstFighter, initSecondFighter) => {
+    const totalFirstFighterHealth = initFirstFighter.health;
+    const totalSecondFighterHealth = initSecondFighter.health;
+
+    return (firstHealth, secondHealth) => {
+        const firstWidth = (firstHealth * 100) / totalFirstFighterHealth;
+        const secondWidth = (secondHealth * 100) / totalSecondFighterHealth;
+
+        firstFighterIndicator.style.width = `${Math.floor(firstWidth)}%`;
+        secondFighterIndicator.style.width = `${Math.floor(secondWidth)}%`;
+    };
+};
+
 export async function fight(firstFighter, secondFighter) {
     return new Promise(resolve => {
         // resolve the promise with the winner when fight is over
@@ -163,6 +186,11 @@ export async function fight(firstFighter, secondFighter) {
             newFirstFighter.hasUnblockCrit = true;
             newSecondFighter.hasUnblockCrit = true;
         }, 10000);
+
+        firstFighterIndicator = document.getElementById('left-fighter-indicator');
+        secondFighterIndicator = document.getElementById('right-fighter-indicator');
+
+        updateIndicators = updateFighterIndicator(firstFighter, secondFighter);
 
         // Handle key down event
         document.addEventListener('keydown', handlerFightKeyDown);
