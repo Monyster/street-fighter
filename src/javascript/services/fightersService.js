@@ -3,7 +3,7 @@ import callApi from '../helpers/apiHelper';
 class FighterService {
     #endpoint = 'fighters.json';
 
-    #detailsFighterEndpoint = 'details/fighter';
+    #detailsFighterPath = 'details/fighter';
 
     async getFighters() {
         try {
@@ -16,7 +16,7 @@ class FighterService {
 
     async getFighterDetails(id) {
         try {
-            const fighterDetails = await callApi(`${this.#detailsFighterEndpoint}/${id}.json`);
+            const fighterDetails = await callApi(`${this.#detailsFighterPath}/${id}.json`);
             return fighterDetails;
         } catch (error) {
             throw error;
