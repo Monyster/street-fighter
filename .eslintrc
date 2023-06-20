@@ -11,7 +11,7 @@
     "rules": {
         "prettier/prettier": "error",
         "arrow-body-style": 0,
-        "no-console": ["error", { "allow": ["warn", "error", "log"] }],
+        "no-console": ["error", { "allow": ["warn", "error"] }],
         "no-underscore-dangle": 0,
         "no-useless-catch": 0
     },
