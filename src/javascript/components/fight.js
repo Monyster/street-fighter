@@ -1,18 +1,28 @@
 import controls from '../../constants/controls';
 
+// Extended objects of the fighters
 let newFirstFighter = null;
 let newSecondFighter = null;
 
+// Winner in fight
 let winner = null;
+
+// SetInterval pointer
 let critUpdateInterval = null;
 
+// Function that resolve the fight promise
 let fightResolve = null;
 
+// Elements of health indicators
 let firstFighterIndicator = null;
 let secondFighterIndicator = null;
 
-let updateIndicators = () => {};
+let updateIndicators = null;
 
+// Contains held keys
+const heldKeys = new Set();
+
+// Contains keys that are used to perform actions in battle
 const pressedKeys = new Set();
 
 // Generate random number integer (1 or 2)
@@ -91,6 +101,7 @@ function processFightKeys() {
         }
     } else if (pressedKeys.has(controls.PlayerOneAttack)) {
         newSecondFighter.health -= getDamage(newFirstFighter, newSecondFighter);
+        pressedKeys.delete(controls.PlayerOneAttack);
     }
 
     // Process attacks when no blocked player two
@@ -101,6 +112,7 @@ function processFightKeys() {
         }
     } else if (pressedKeys.has(controls.PlayerTwoAttack)) {
         newFirstFighter.health -= getDamage(newSecondFighter, newFirstFighter);
+        pressedKeys.delete(controls.PlayerTwoAttack);
     }
 }
 
@@ -125,11 +137,12 @@ const handlerFightKeyDown = event => {
     // Get current pressed key
     const pressedKey = event.code;
 
-    // If already in Set of pressed keys (prevent endless "same key" loop )
-    if (pressedKeys.has(pressedKey)) return;
-    pressedKeys.add(pressedKey);
+    // If already in Set of holding keys (prevent endless "same key" loop )
+    if (heldKeys.has(pressedKey)) return;
+    heldKeys.add(pressedKey);
 
-    console.warn(pressedKeys);
+    // Remember the key that was pressed
+    pressedKeys.add(pressedKey);
 
     processFightKeys();
 
@@ -151,6 +164,7 @@ const handlerFightKeyDown = event => {
 const handlerFightKeyUp = event => {
     event.preventDefault();
 
+    heldKeys.delete(event.code);
     pressedKeys.delete(event.code);
 };
 
