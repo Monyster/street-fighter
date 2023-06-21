@@ -33,7 +33,7 @@
     text-align: center;
 
     font-weight: 600;
-    font-size: 72px;
+    font-size: 50px;
 
     margin: 0;
 
@@ -51,10 +51,12 @@
     padding: 5px 0 0 0;
 
     font-weight: 600;
-    font-size: 40px;
+    font-size: 24px;
 }
 
 .fighter-preview___parameter-ico {
+    width: 30px;
+
     background: -webkit-linear-gradient(#ff0000, #615b09);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
