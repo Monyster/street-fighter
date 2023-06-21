@@ -118,9 +118,9 @@ function processFightKeys() {
 
 function selectWinner() {
     if (newFirstFighter.health <= 0) {
-        winner = newFirstFighter;
-    } else if (newSecondFighter.health <= 0) {
         winner = newSecondFighter;
+    } else if (newSecondFighter.health <= 0) {
+        winner = newFirstFighter;
     }
 }
 
@@ -182,8 +182,8 @@ const updateFighterIndicator = (initFirstFighter, initSecondFighter) => {
         const firstWidth = (firstHealth * 100) / totalFirstFighterHealth;
         const secondWidth = (secondHealth * 100) / totalSecondFighterHealth;
 
-        firstFighterIndicator.style.width = `${Math.floor(firstWidth)}%`;
-        secondFighterIndicator.style.width = `${Math.floor(secondWidth)}%`;
+        firstFighterIndicator.style.width = firstWidth >= 0 ? `${Math.floor(firstWidth)}%` : 0;
+        secondFighterIndicator.style.width = secondWidth >= 0 ? `${Math.floor(secondWidth)}%` : 0;
     };
 };
 
@@ -192,8 +192,8 @@ export async function fight(firstFighter, secondFighter) {
         // resolve the promise with the winner when fight is over
 
         // Create new fighters object with additional keys
-        newFirstFighter = { ...firstFighter, hasUnblockCrit: false };
-        newSecondFighter = { ...secondFighter, hasUnblockCrit: false };
+        newFirstFighter = { ...firstFighter, hasUnblockCrit: false, player: 'left' };
+        newSecondFighter = { ...secondFighter, hasUnblockCrit: false, player: 'right' };
 
         // Update special critical hit chance which can't be blocked
         critUpdateInterval = setInterval(() => {
