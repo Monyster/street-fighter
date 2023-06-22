@@ -29,6 +29,15 @@ function createFighterName(fighter) {
     return fighterName;
 }
 
+/**
+ * Creates parameter element fighter-preview___parameter.
+ * Fill it with fighter-preview___parameter-ico
+ * and fighter-preview___parameter-value
+ *
+ * @param {*} ico html unicode( example '&#10084;')
+ * @param {*} value Number
+ * @returns fighter-preview___parameter element
+ */
 function createFighterParameter(ico, value) {
     const fighterParameterBlock = createElement({ tagName: 'div', className: 'fighter-preview___parameter' });
 
@@ -44,6 +53,11 @@ function createFighterParameter(ico, value) {
     return fighterParameterBlock;
 }
 
+/**
+ * Creates element to wrap parameters
+ *
+ * @returns Element fighter-preview___info
+ */
 function createInfoWrapper() {
     return createElement({ tagName: 'div', className: 'fighter-preview___info' });
 }
@@ -59,7 +73,6 @@ export function createFighterPreview(fighter, position) {
         return fighterElement;
     }
 
-    // todo: show fighter info (image, name, health, etc.)
     const fighterImage = createFighterImage(fighter);
 
     const fighterInfoWrapper = createInfoWrapper();

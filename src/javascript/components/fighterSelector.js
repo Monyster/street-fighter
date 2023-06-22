@@ -7,10 +7,10 @@ import fighterService from '../services/fightersService';
 const fighterDetailsMap = new Map();
 
 export async function getFighterInfo(fighterId) {
-    // get fighter info from fighterDetailsMap or from service and write it to fighterDetailsMap
     try {
         let fighter;
 
+        // Checks cached data else call api
         if (fighterDetailsMap.has(fighterId)) {
             fighter = fighterDetailsMap.get(fighterId);
         } else {

@@ -25,7 +25,13 @@ const heldKeys = new Set();
 // Contains keys that are used to perform actions in battle
 const pressedKeys = new Set();
 
-// Generate random number integer (1 or 2)
+/**
+ * Generate random number between min and max (include)
+ *
+ * @param {*} min Minimal (include)
+ * @param {*} max Maximum (include)
+ * @returns Random number
+ */
 const getRandomChance = (min, max) => {
     return Math.random() * (max - min) + min;
 };
@@ -40,7 +46,6 @@ export function getHitPower(fighter) {
 }
 
 export function getBlockPower(fighter) {
-    // return block power
     const { defense } = fighter;
 
     const dodgeChance = getRandomChance(1, 2);
@@ -56,6 +61,12 @@ export function getDamage(attacker, defender) {
     return blockPower > hitPower ? 0 : hitPower - blockPower;
 }
 
+/**
+ * Process the keys that players pressed.
+ * Depends on keys in pressedKeys make different actions
+ *
+ * @returns
+ */
 function processFightKeys() {
     const playerOneCriticalHit = !controls.PlayerOneCriticalHitCombination.some(elem => {
         return !pressedKeys.has(elem);
@@ -116,6 +127,9 @@ function processFightKeys() {
     }
 }
 
+/**
+ * Checks the health of both players and selects the winner
+ */
 function selectWinner() {
     if (newFirstFighter.health <= 0) {
         winner = newSecondFighter;
