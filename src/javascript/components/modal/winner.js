@@ -6,7 +6,7 @@ export default function showWinnerModal(fighter) {
     // call showModal function
     const { player, name } = fighter;
 
-    const title = `The winner is ${player}`;
+    const title = `${player} win`.toUpperCase();
 
     // Modal body container
     const bodyElement = createElement({ tagName: 'div', className: 'modal-body' });

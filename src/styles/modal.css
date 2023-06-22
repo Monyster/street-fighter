@@ -12,9 +12,21 @@
 
 .modal-root {
     display: flex;
+
+    min-width: 60%;
+
+    padding: 45px 0;
+
+    justify-content: center;
+    align-items: center;
     flex-direction: column;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    background-color: white;
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    /* background-color: white; */
+    background: url('/resources/winner-bg.jpg') no-repeat center;
+
+    background-size: cover;
+
+    border-radius: 50%;
 }
 
 .modal-header {
@@ -23,9 +35,15 @@
     justify-content: space-between;
     min-width: 300px;
     padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
+    /* border-bottom: 1px solid #e9ecef; */
     font-weight: 700;
-    font-size: 22px;
+    font-size: 50px;
+}
+
+.modal-header span {
+    background: -webkit-linear-gradient(#ff0000, #615b09);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
 .modal-body {
@@ -33,8 +51,27 @@
 }
 
 .close-btn {
-    font-size: 1.5rem;
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1;
     cursor: pointer;
+
+    color: #ffffff;
+
+    background: -webkit-linear-gradient(#ff0000, #615b09);
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+
+    text-align: center;
+}
+
+.modal-winner___name {
+    text-align: center;
+    font-weight: 600;
+    font-size: 40px;
+
+    background: -webkit-linear-gradient(#9e4001, #d30000);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
